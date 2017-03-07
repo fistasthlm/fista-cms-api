@@ -17,6 +17,10 @@
     "url": "https://github.com/fistasthlm/fista-cms-api/issues"
   },
   "homepage": "https://github.com/fistasthlm/fista-cms-api#readme",
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  },
   "dependencies": {
     "bunyan-winston-adapter": "^0.2.0",
     "mongoose": "^4.8.6",
