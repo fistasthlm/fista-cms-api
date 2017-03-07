@@ -12,11 +12,6 @@
     "url": "git+https://github.com/fistasthlm/fista-cms-api.git"
   },
   "author": "Peter Holmberg",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/fistasthlm/fista-cms-api/issues"
-  },
-  "homepage": "https://github.com/fistasthlm/fista-cms-api#readme",
   "engines": {
     "node": "0.10.x",
     "npm": "1.2.x"
