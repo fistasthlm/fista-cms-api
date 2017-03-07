@@ -3,7 +3,7 @@
 /**
  * Module Dependencies
  */
-var config        = require('./config'),
+var config       = require('./config'),
    restify       = require('restify'),
    bunyan        = require('bunyan'),
    winston       = require('winston'),
@@ -45,7 +45,7 @@ server.use(restify.fullResponse());
 /**
  * Error Handling
  */
-server.on('uncaughtException', (req, res, route, err) => {
+server.on('uncaughtException', function(req, res, route, err) {
    log.error(err.stack);
    res.send(err);
 });
