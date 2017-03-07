@@ -17,7 +17,7 @@ global.log = new winston.Logger({
    transports: [
       new winston.transports.Console({
          level: 'info',
-         timestamp: () => {
+         timestamp: function() {
             return new Date().toString()
          },
          json: true
