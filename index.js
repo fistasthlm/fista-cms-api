@@ -3,7 +3,7 @@
 /**
  * Module Dependencies
  */
-const config        = require('./config'),
+var config        = require('./config'),
    restify       = require('restify'),
    bunyan        = require('bunyan'),
    winston       = require('winston'),
