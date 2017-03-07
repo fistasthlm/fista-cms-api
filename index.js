@@ -5,7 +5,6 @@
  */
 var config       = require('./config'),
    restify       = require('restify'),
-   bunyan        = require('bunyan'),
    winston       = require('winston'),
    bunyanWinston = require('bunyan-winston-adapter'),
    mongoose      = require('mongoose');
