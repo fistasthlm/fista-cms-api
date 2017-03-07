@@ -3,8 +3,8 @@
 /**
  * Module Dependencies
  */
-const errors = require('restify-errors');
-const Bike = require('../models/bike');
+var errors = require('restify-errors');
+var Bike = require('../models/bike');
 
 server.get('/bike', function(req, res, next) {
 
@@ -24,9 +24,9 @@ server.get('/bike', function(req, res, next) {
 
 server.post('/bike', function(req, res, next) {
 
-   let data = req.body || {};
+   var data = req.body || {};
 
-   let todo = new Bike(data);
+   var todo = new Bike(data);
    todo.save(function(err) {
 
       if (err) {
