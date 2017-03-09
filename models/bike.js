@@ -6,6 +6,17 @@ var createdModified = require('mongoose-createdmodified').createdModifiedPlugin;
 
 var BikeSchema = new mongoose.Schema({
    title: String,
+   frame: String,
+   fork: String,
+   cranks: String,
+   pedals: String,
+   drivetrain: String,
+   handlebars: String,
+   saddle: String,
+   frontWheel: String,
+   rearWheel: String,
+   photos: Array,
+   instagram: String
 }, { minimize: false });
 
 

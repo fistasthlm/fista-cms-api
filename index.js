@@ -74,7 +74,8 @@ server.listen(config.port, function() {
          config.env
       );
 
-      require('./routes')
+      require('./routes/bikes');
+      require('./routes/user');
 
    });
 
