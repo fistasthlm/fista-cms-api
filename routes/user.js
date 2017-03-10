@@ -5,7 +5,6 @@ var User = require('../models/user');
 
 server.post('/login', function (req, res, next) {
    var data = req.body || {};
-   console.log('pong', data);
 
    User.findOne({ username: data.username }, function (error, document) {
       if (error) {
@@ -33,4 +32,4 @@ server.post('/createUser', function (req, res, next) {
       res.send(201);
       next();
    })
-})
+});
