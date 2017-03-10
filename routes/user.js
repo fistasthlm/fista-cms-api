@@ -5,6 +5,7 @@ var User = require('../models/user');
 
 server.post('/login', function (req, res, next) {
    var data = req.body || {};
+   console.log('pong', data);
 
    User.findOne({ username: data.username }, function (error, document) {
       if (error) {
@@ -13,7 +14,7 @@ server.post('/login', function (req, res, next) {
       } else if(!document) {
          return next(new errors.ResourceNotFoundError('The resource you requested could not be found.'))
       } else if(document.password === data.password) {
-         res.send(200);
+         res.send(200, document);
       }
    })
 });
