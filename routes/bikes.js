@@ -31,9 +31,8 @@ server.get('/bike:bike_id', function (req, res, next) {
 
 server.post('/bike', function(req, res, next) {
    var data = req.body || {};
-
-   var todo = new Bike(data);
-   todo.save(function(err) {
+   var bike = new Bike(data);
+   bike.save(function(err) {
 
       if (err) {
          log.error(err);
