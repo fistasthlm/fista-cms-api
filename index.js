@@ -36,14 +36,12 @@ server.on('uncaughtException', function(req, res, route, err) {
 });
 
 server.listen(config.port, function() {
-
    mongoose.connection.on('error', function(err) {
       log.error('Mongoose default connection error: ' + err);
       process.exit(1)
    });
 
    mongoose.connection.on('open', function(err) {
-
       if (err) {
          log.error('Mongoose default connection error: ' + err);
          process.exit(1)
