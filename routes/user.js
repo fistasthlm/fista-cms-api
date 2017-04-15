@@ -3,6 +3,25 @@
 var errors = require('restify-errors');
 var User = require('../models/user');
 
+server.get('/user/:token', function (req, res, next) {
+   var token = req.params.token || {};
+   if (!token) {
+      res.send(400);
+   }
+
+   var credentials = global.atob(token).split(':');
+   User.findOne({ username: credentials[0] }, function (error, document) {
+      if (error) {
+         log.error(error);
+         return next(new errors.InvalidContentError(error.errors.name.message));
+      } else if(!document) {
+         return next(new errors.ResourceNotFoundError('The resource you requested could not be found.'))
+      } else if(document.password === token) {
+         res.send(200, document);
+      }
+   })
+});
+
 server.post('/login', function (req, res, next) {
    var data = req.body || {};
 

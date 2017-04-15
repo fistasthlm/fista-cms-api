@@ -17,6 +17,7 @@
     "npm": "1.2.x"
   },
   "dependencies": {
+    "buffer": "^5.0.5",
     "bunyan-winston-adapter": "^0.2.0",
     "mongoose": "^4.8.6",
     "mongoose-api-query": "^0.1.1-pre",
