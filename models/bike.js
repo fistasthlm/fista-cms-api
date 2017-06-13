@@ -15,7 +15,10 @@ var BikeSchema = new mongoose.Schema({
    saddle: String,
    frontWheel: String,
    rearWheel: String,
-   photos: Array,
+   photos: [{
+      title: String,
+      data: Buffer,
+   }],
    instagram: String
 }, { minimize: false });
 

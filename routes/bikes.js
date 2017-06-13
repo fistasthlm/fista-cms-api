@@ -12,7 +12,7 @@ server.get('/bike', function(req, res, next) {
       }
 
       res.send(docs);
-      next()
+      next();
    })
 
 });
@@ -37,7 +37,6 @@ server.post('/bike', function(req, res, next) {
       if (err) {
          log.error(err);
          return next(new errors.InternalError(err.message));
-         next();
       }
 
       res.send(201);
