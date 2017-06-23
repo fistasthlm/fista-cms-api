@@ -3,8 +3,8 @@
 var errors = require('restify-errors');
 var Bike = require('../models/bike');
 
-server.get('/bike', function(req, res, next) {
-   Bike.apiQuery(req.params, function(err, docs) {
+server.get('/bike/:handle', function(req, res, next) {
+   Bike.apiQuery({instagram: req.params.handle}, function(err, docs) {
 
       if (err) {
          log.error(err);
