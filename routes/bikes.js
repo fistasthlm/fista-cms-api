@@ -43,3 +43,27 @@ server.post('/bike', function(req, res, next) {
       next();
    })
 });
+
+server.put('/bike/:bike_id', function (req, res, next) {
+   var data = req.body || {};
+
+   Bike.findOne({_id: req.params.bike_id}, function (error, doc) {
+      if(error) {
+         log.error(error);
+         return next(new errors.InvalidContentError(err.errors.name.message));
+      }
+      else if(!doc) {
+         return next(new errors.ResourceNotFoundError('The resource you requested could not be found.'));
+      }
+
+      Bike.update({ _id: req.params.bike_id }, data, function(error) {
+         if (error) {
+            log.error(error);
+            return next(new errors.InvalidContentError(error.errors.name.message))
+         }
+
+         res.send(200, data);
+         next();
+      })
+   })
+});
