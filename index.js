@@ -1,10 +1,11 @@
 'use strict';
 
-var config        = require('./config');
-var restify       = require('restify');
-var winston       = require('winston');
+var config = require('./config');
+var restify = require('restify');
+var corsMiddleware = require('restify-cors-middleware');
+var winston = require('winston');
 var bunyanWinston = require('bunyan-winston-adapter');
-var mongoose      = require('mongoose');
+var mongoose = require('mongoose');
 
 global.log = new winston.Logger({
    transports: [
@@ -42,7 +43,14 @@ server.use(restify.jsonBodyParser({ mapParams: true }));
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser({ mapParams: true }));
 server.use(restify.fullResponse());
-server.use(restify.CORS());
+const cors = corsMiddleware({
+   origins: ['*'],
+   allowHeaders: ['API-Token'],
+   exposeHeaders: ['API-Token-Expiry']
+});
+
+server.pre(cors.preflight);
+server.use(cors.actual);
 
 server.on('uncaughtException', function(req, res, route, err) {
    log.error(err.stack);
@@ -52,13 +60,13 @@ server.on('uncaughtException', function(req, res, route, err) {
 server.listen(config.port, function() {
    mongoose.connection.on('error', function(err) {
       log.error('Mongoose default connection error: ' + err);
-      process.exit(1)
+      process.exit(1);
    });
 
    mongoose.connection.on('open', function(err) {
       if (err) {
          log.error('Mongoose default connection error: ' + err);
-         process.exit(1)
+         process.exit(1);
       }
 
       log.info(
