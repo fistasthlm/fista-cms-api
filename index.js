@@ -36,7 +36,7 @@ if (typeof atob === 'undefined') {
 global.server = restify.createServer({
    name    : config.name,
    version : config.version,
-   log     : bunyanWinston.createAdapter(log),
+   log     : bunyanWinston.createAdapter(log)
 });
 
 server.use(restify.jsonBodyParser({ mapParams: true }));
@@ -45,7 +45,7 @@ server.use(restify.queryParser({ mapParams: true }));
 server.use(restify.fullResponse());
 const cors = corsMiddleware({
    origins: ['*'],
-   allowHeaders: ['API-Token'],
+   allowHeaders: ['x-fista-authenticate'],
    exposeHeaders: ['API-Token-Expiry']
 });
 

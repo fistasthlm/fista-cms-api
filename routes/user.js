@@ -3,8 +3,9 @@
 var errors = require('restify-errors');
 var User = require('../models/user');
 
-server.get('/user/:token', function (req, res, next) {
-   var token = req.params.token || {};
+server.get('/user', function (req, res, next) {
+   console.log(req.headers);
+   var token = req.headers['x-fista-authenticate'] || {};
    if (!token) {
       res.send(400);
    }
@@ -17,7 +18,11 @@ server.get('/user/:token', function (req, res, next) {
       } else if(!document) {
          return next(new errors.ResourceNotFoundError('The resource you requested could not be found.'))
       } else if(document.password === token) {
-         res.send(200, document);
+         res.send(200, {
+            instagram: document.instagram,
+            username: document.username,
+            id: document._id
+         });
       }
    })
 });
