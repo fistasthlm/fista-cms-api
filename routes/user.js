@@ -4,7 +4,6 @@ var errors = require('restify-errors');
 var User = require('../models/user');
 
 server.get('/user', function (req, res, next) {
-   console.log(req.headers);
    var token = req.headers['x-fista-authenticate'] || {};
    if (!token) {
       res.send(400);
