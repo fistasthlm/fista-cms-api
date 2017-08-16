@@ -13,8 +13,8 @@
   },
   "author": "Peter Holmberg",
   "engines": {
-    "node": "0.10.x",
-    "npm": "1.2.x"
+    "node": "8.x",
+    "npm": "5.x"
   },
   "dependencies": {
     "buffer": "^5.0.5",
