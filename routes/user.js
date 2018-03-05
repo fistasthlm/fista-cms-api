@@ -36,7 +36,11 @@ server.post('/login', function (req, res, next) {
       } else if(!document) {
          return next(new errors.ResourceNotFoundError('The resource you requested could not be found.'))
       } else if(document.password === data.password) {
-         res.send(200, document);
+          res.send(200, {
+              instagram: document.instagram,
+              username: document.username,
+              id: document._id
+          });
       }
    })
 });
@@ -49,7 +53,6 @@ server.post('/createUser', function (req, res, next) {
       if (error) {
          log.error(error);
          return next(new errors.InternalError(error.message));
-         next();
       }
 
       res.send(201);
