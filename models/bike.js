@@ -1,10 +1,10 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var mongooseApiQuery = require('mongoose-api-query');
-var createdModified = require('mongoose-createdmodified').createdModifiedPlugin;
+const mongoose = require('mongoose');
+const mongooseApiQuery = require('mongoose-api-query');
+const createdModified = require('mongoose-createdmodified').createdModifiedPlugin;
 
-var BikeSchema = new mongoose.Schema({
+const BikeSchema = new mongoose.Schema({
    title: String,
    frame: String,
    fork: String,
@@ -26,5 +26,5 @@ var BikeSchema = new mongoose.Schema({
 BikeSchema.plugin(mongooseApiQuery);
 BikeSchema.plugin(createdModified, { index: true });
 
-var Bike = mongoose.model('Bike', BikeSchema);
+const Bike = mongoose.model('Bike', BikeSchema);
 module.exports = Bike;
